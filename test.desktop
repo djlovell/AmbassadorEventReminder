@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=EventReminder
+Version=1.0
+Icon=/home/djlovell/Pictures/ambassadorslogo.jpg
+Exec=/home/djlovell/Documents/ProgrammingProjects/AmbassadorEventReminder/SendEventReminder.py
+Path=/home/djlovell/Documents/ProgrammingProjects/AmbassadorEventReminder
+Terminal=false
+Type=Application
