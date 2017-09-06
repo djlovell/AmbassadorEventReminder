@@ -18,7 +18,7 @@ class EventReminderSpider(CrawlSpider):
     def parse(self, response):
         return scrapy.FormRequest.from_response(
             response,
-            formdata={'user': '[USERNAME]', 'password': '[PASSWORD]'},
+            formdata={'user': '[USERNAME]', 'password': '[PASSWORD]'}, #enter engineering login here
             callback=self.scrape_event_info
         )
     #scrapes event information and sends a properly formatted email
@@ -75,6 +75,7 @@ class EventReminderSpider(CrawlSpider):
                         trIterator = 0 #reset iterator, looking at sets of 3
 
         #Formatting information for an email
+	'''
         greetingText = "Greetings fellow Engineering Ambassadors!\n\n\tIn the spirit "+\
 		"of keeping on top of our upcoming events and saving time during meetings, "+\
          "\nplease check your calendars and sign up for the following "+\
@@ -97,6 +98,7 @@ class EventReminderSpider(CrawlSpider):
         salutation = "\n\nHave a great week! Until next time," +\
                     "\n\nDaniel J. Lovell\nJunior|Computer Engineering" +\
                     "\nKansas State University"
+	
 
         fromaddr = "[FROM ADDRESS]"
         toaddr = "[TO ADDRESS]"
@@ -106,13 +108,14 @@ class EventReminderSpider(CrawlSpider):
         msg['Subject'] = "ENG AMB EVENT REMINDER"
         body = greetingText + eventEmailTexts + salutation
         msg.attach(MIMEText(body, 'plain'))
-        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server = smtplib.SMTP('smtp.gmail.com', 587) #change for email service
         server.starttls()
         server.login(fromaddr, "[EMAIL PASSWORD]")
         text = msg.as_string()
         server.sendmail(fromaddr, toaddr, text) #uncomment to send email
         server.quit()
-
+	'''
+	
         return
 
         '''
